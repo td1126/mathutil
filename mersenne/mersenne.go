@@ -25,7 +25,7 @@ import (
 	"math/big"
 
 	"github.com/cznic/mathutil"
-	"github.com/remyoudompheng/bigfft"
+	//"github.com/remyoudompheng/bigfft"
 )
 
 var (
@@ -272,9 +272,9 @@ func ModPow(b, e, m uint32) (r *big.Int) {
 	bb := big.NewInt(int64(b))
 	r = big.NewInt(1)
 	for ; e != 0; e-- {
-		r = bigfft.Mul(r, bb)
+		r = new(big.Int).Mul(r, bb)
 		Mod(r, r, m)
-		bb = bigfft.Mul(bb, bb)
+		bb = new(big.Int).Mul(bb, bb)
 		Mod(bb, bb, m)
 	}
 	return

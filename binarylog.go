@@ -6,8 +6,7 @@ package mathutil
 
 import (
 	"math/big"
-
-	"github.com/remyoudompheng/bigfft"
+	//"github.com/remyoudompheng/bigfft"
 )
 
 type float struct {
@@ -56,7 +55,7 @@ func (f *float) div2() {
 }
 
 func (f *float) sqr() {
-	f.n = bigfft.Mul(f.n, f.n)
+	f.n = new(big.Int).Mul(f.n, f.n)
 	f.fracBits *= 2
 	f.normalize()
 }
